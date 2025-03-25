@@ -1,0 +1,28 @@
+.nurseries-container {
+    margin: 10px auto;
+}
+
+.nurseries-header {
+    text-align: center;
+}
+
+.nurseries {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.nursery {
+    width: 50%;
+    box-sizing: border-box;
+    padding: 10px;
+    /* border: 1px solid grey; */
+
+}
+
+.nursery-flowers > li {
+    list-style-type: none;
+}
+
+
