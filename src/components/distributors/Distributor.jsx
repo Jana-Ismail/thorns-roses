@@ -41,6 +41,7 @@ export const Distributor = ( { distributor } ) => {
     return (
         <section className="distributor">
             <h3 className="distributor-name">{distributor.businessName}</h3>
+            <h3>Flowers</h3>
             <ul className="distributor-flowers-list">
                 {distributorFlowers.map(distributorFlower => (
                     <li className="distributor-flowers-list-item" key={distributorFlower.id}>
