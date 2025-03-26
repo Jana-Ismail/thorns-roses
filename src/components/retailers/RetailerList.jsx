@@ -1,0 +1,28 @@
+import { useEffect } from "react"
+import { useState } from "react"
+import { getRetailers } from "../../services/retailerService"
+import { Retailer } from "./Retailer"
+
+export const RetailerList = () => {
+    const [retailers, setRetailers] = useState([])
+
+    const getAndSetRetailers = async () => {
+        const retailersArr = await getRetailers()
+        setRetailers(retailersArr)
+    }
+
+    useEffect(() => {
+        getAndSetRetailers()
+    }, [])
+
+    return (
+        <div className="retailers-container">
+            <h2 className="retailers-header">Retailers</h2>
+            <article className="retailers-list">
+                {retailers.map(retailer => (
+                    <Retailer key={retailer.id} retailer={retailer} />
+                ))}
+            </article>
+        </div>
+    )
+}
