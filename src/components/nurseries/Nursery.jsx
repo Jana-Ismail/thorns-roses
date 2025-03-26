@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
-import { getNurseryDistributors, getNurseryFlowers } from "../../services/nurseryService"
+import { getNurseryDistributors } from "../../services/nurseryDistributorService"
+import { getNurseryFlowersByNurseryId } from "../../services/nurseryFlowerService"
+
 
 export const Nursery = ( { nursery } ) => {
     const [nurseryFlowers, setNurseryFlowers] = useState([])
     const [nurseryDistributors, setNurseryDistributors] = useState([])
 
     const getAndSetNurseryFlowers = async () => {
-        const nurseryFlowersArr = await getNurseryFlowers(nursery.id)
+        const nurseryFlowersArr = await getNurseryFlowersByNurseryId(nursery.id)
         setNurseryFlowers(nurseryFlowersArr)
     }
 
@@ -22,7 +24,7 @@ export const Nursery = ( { nursery } ) => {
 
     return (
         <section className="nursery">
-            <h3 className="nursery-info">{nursery.businessName}</h3>
+            <h3 className="nursery-name">{nursery.businessName}</h3>
             <div className="nursery-flowers-container">
                 <h3>Flowers</h3>
                 <ul className="nursery-flowers">
@@ -33,7 +35,7 @@ export const Nursery = ( { nursery } ) => {
                     ))}
                 </ul>
             </div>
-            <div className="distributors-list">
+            <div className="nursery-distributors-list">
                 <h3>Distributors</h3>
                 <ul className="nursery-distributors">
                     {nurseryDistributors.map(nurseryDistributor => (

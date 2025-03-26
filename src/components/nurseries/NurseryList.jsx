@@ -18,7 +18,7 @@ export const NurseryList = () => {
     return (
         <div className="nurseries-container">
             <h2 className="nurseries-header">Nurseries</h2>
-            <article className="nurseries">
+            <article className="nurseries-list">
                 {nurseries.map(nursery => (
                     <Nursery nursery={nursery} key={nursery.id} />
                 ))}
