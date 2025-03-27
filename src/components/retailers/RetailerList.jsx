@@ -4,7 +4,7 @@ import { getRetailers } from "../../services/retailerService"
 import { Retailer } from "./Retailer"
 import './Retailers.css'
 
-export const RetailerList = () => {
+export const RetailerList = ( { currentCustomer } ) => {
     const [retailers, setRetailers] = useState([])
 
     const getAndSetRetailers = async () => {
@@ -21,7 +21,11 @@ export const RetailerList = () => {
             <h2 className="retailers-header">Retailers</h2>
             <article className="retailers-list">
                 {retailers.map(retailer => (
-                    <Retailer key={retailer.id} retailer={retailer} />
+                    <Retailer 
+                        key={retailer.id} 
+                        retailer={retailer} 
+                        currentCustomer={currentCustomer}
+                    />
                 ))}
             </article>
         </div>
