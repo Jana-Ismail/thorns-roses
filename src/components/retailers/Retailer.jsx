@@ -2,8 +2,9 @@ import { useEffect, useState } from "react"
 import { getNurseryDistributorsByDistributorId } from "../../services/nurseryDistributorService"
 import { getNurseryFlowersByNurseryId } from "../../services/nurseryFlowerService"
 import "./Retailers.css"
+import { addCartItem } from "../../services/cartService"
 
-export const Retailer = ( { retailer } ) => {
+export const Retailer = ( { retailer, currentCustomer } ) => {
     const [nurseryDistributors, setNurseryDistributors] = useState([])
     const [retailerFlowers, setRetailerFlowers] = useState([])
 
@@ -41,6 +42,16 @@ export const Retailer = ( { retailer } ) => {
         }
     }, [nurseryDistributors, retailer])
 
+    const handlePurchase = async (retailerFlower) => {
+        const cartItemObj = {
+            flowerId: retailerFlower.flower.id,
+            retailerId: retailer.id,
+            customerId: currentCustomer.id
+        }
+
+        await addCartItem(cartItemObj)
+    }
+
     return (
         <section className="retailer">
             <h3 className="retailer-name">{retailer.businessName}</h3>
@@ -53,7 +64,10 @@ export const Retailer = ( { retailer } ) => {
                             <span className="float-left">{retailerFlower.flower.color} | {retailerFlower.flower.species}</span>
                             <span className="float-right">
                                 ${retailerFlower.retailerPrice} 
-                                <button className="purchase-btn">Purchase</button>
+                                <button 
+                                    className="purchase-btn"
+                                    onClick={() => {handlePurchase(retailerFlower)}}
+                                >Purchase</button>
                             </span>
                         </li>
                     ))}
