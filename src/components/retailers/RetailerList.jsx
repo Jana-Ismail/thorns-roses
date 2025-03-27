@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { getRetailers } from "../../services/retailerService"
 import { Retailer } from "./Retailer"
+import './Retailers.css'
 
 export const RetailerList = () => {
     const [retailers, setRetailers] = useState([])

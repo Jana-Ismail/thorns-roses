@@ -1,5 +1,5 @@
 .nurseries-container {
-    margin: 10px auto;
+    margin: 0 10px;
 }
 
 .nurseries-header {
@@ -18,7 +18,6 @@
     box-sizing: border-box;
     padding: 10px;
     /* border: 1px solid grey; */
-
 }
 
 .nursery-flowers > li {

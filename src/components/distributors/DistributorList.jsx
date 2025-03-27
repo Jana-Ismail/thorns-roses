@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getDistributors } from "../../services/distributorService"
 import { Distributor } from "./Distributor"
-import { getAllNurseryFlowers } from "../../services/nurseryFlowerService"
+import './Distributors.css'
 
 export const DistributorList = () => {
     const [distributors, setDistributors] = useState([])

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getNurseryDistributorsByDistributorId } from "../../services/nurseryDistributorService"
 import { getNurseryFlowersByNurseryId } from "../../services/nurseryFlowerService"
+import "./Retailers.css"
 
 export const Retailer = ( { retailer } ) => {
     const [nurseryDistributors, setNurseryDistributors] = useState([])
@@ -46,11 +47,17 @@ export const Retailer = ( { retailer } ) => {
             <div className="retailer-address">{retailer.address}</div>
             <h3 className="retailer-flowers-header">Flowers</h3>
             <ul className="retailer-flowers-list">
-                {retailerFlowers.map(retailerFlower => (
-                    <li className="retailer-flowers-list-item" key={retailerFlower.id}>
-                        {retailerFlower.flower.color} | {retailerFlower.flower.species} ${retailerFlower.retailerPrice}
-                    </li>
-                ))}
+                <div className="list-items-container">
+                    {retailerFlowers.map(retailerFlower => (
+                        <li className="retailer-flowers-list-item" key={retailerFlower.id}>
+                            <span className="float-left">{retailerFlower.flower.color} | {retailerFlower.flower.species}</span>
+                            <span className="float-right">
+                                ${retailerFlower.retailerPrice} 
+                                <button className="purchase-btn">Purchase</button>
+                            </span>
+                        </li>
+                    ))}
+                </div>
             </ul>
             <div className="retailer-distributor-name">Distributor : <span>{retailer.distributor.businessName}</span></div>
             <div className="retailer-nurseries-header">Nurseries</div>
