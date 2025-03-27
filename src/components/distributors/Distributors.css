@@ -1,0 +1,28 @@
+.distributors-container {
+    margin: 10px auto;
+}
+
+.distributors-header {
+    text-align: center;
+}
+
+.distributors-list {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.distributor {
+    width: 50%;
+    box-sizing: border-box;
+    padding: 10px;
+    /* border: 1px solid grey; */
+
+}
+
+.distributor-flowers-list > li {
+    list-style-type: none;
+}
+
+
