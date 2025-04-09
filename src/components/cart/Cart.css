@@ -1,0 +1,21 @@
+.cart-header {
+    text-align: center;
+}
+
+table {
+    text-align: left;
+    padding: 4px 10px;
+    margin: 30px auto;
+}
+
+th, td {
+    padding: 10px;
+}
+
+tfoot {
+    margin-top: 10px;
+}
+
+.btn-container {
+    text-align: center;
+}

@@ -4,7 +4,7 @@ import { getRetailers } from "../../services/retailerService"
 import { Retailer } from "./Retailer"
 import './Retailers.css'
 
-export const RetailerList = ( { currentCustomer } ) => {
+export const RetailerList = ( { currentCustomer, cartItemsCount, setCartItemsCount } ) => {
     const [retailers, setRetailers] = useState([])
 
     const getAndSetRetailers = async () => {
@@ -25,6 +25,8 @@ export const RetailerList = ( { currentCustomer } ) => {
                         key={retailer.id} 
                         retailer={retailer} 
                         currentCustomer={currentCustomer}
+                        cartItemsCount={cartItemsCount}
+                        setCartItemsCount={setCartItemsCount}
                     />
                 ))}
             </article>

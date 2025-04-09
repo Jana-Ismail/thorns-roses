@@ -4,7 +4,7 @@ import { getNurseryFlowersByNurseryId } from "../../services/nurseryFlowerServic
 import "./Retailers.css"
 import { addCartItem } from "../../services/cartService"
 
-export const Retailer = ( { retailer, currentCustomer } ) => {
+export const Retailer = ( { retailer, currentCustomer, cartItemsCount, setCartItemsCount } ) => {
     const [nurseryDistributors, setNurseryDistributors] = useState([])
     const [retailerFlowers, setRetailerFlowers] = useState([])
 
@@ -46,10 +46,17 @@ export const Retailer = ( { retailer, currentCustomer } ) => {
         const cartItemObj = {
             flowerId: retailerFlower.flower.id,
             retailerId: retailer.id,
-            customerId: currentCustomer.id
+            customerId: currentCustomer.id,
+            retailerFlowerPrice: retailerFlower.retailerPrice
         }
 
-        await addCartItem(cartItemObj)
+        const newCartItem = await addCartItem(cartItemObj)
+
+        if (newCartItem) {
+            setCartItemsCount(cartItemsCount + 1)
+        }
+
+        
     }
 
     return (
@@ -66,8 +73,8 @@ export const Retailer = ( { retailer, currentCustomer } ) => {
                                 ${retailerFlower.retailerPrice} 
                                 <button 
                                     className="purchase-btn"
-                                    onClick={() => {handlePurchase(retailerFlower)}}
-                                >Purchase</button>
+                                    onClick={() => { handlePurchase(retailerFlower) }}
+                                >Add To Cart</button>
                             </span>
                         </li>
                     ))}
